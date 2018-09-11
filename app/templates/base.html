@@ -1,0 +1,77 @@
+<html>
+  <head>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script type = "text/javascript" language = "javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+    <title>Polling App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- styles -->
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  	<div class="header">
+	     <div class="container">
+	        <div class="row">
+	           <div class="col-md-11">
+	              <!-- Logo -->
+	              <div class="logo">
+	                 <h1><a href="{{ url_for('user.index') }}">Polling App</a></h1>
+	              </div>
+	           </div>
+	           <div class="col-md-1">
+	              <div class="navbar navbar-inverse" role="banner">
+	                    <ul class="nav navbar-nav">
+	                      <li>
+	                        <a href="/logout">Logout</a>
+	                      </li>
+	                    </ul>
+	              </div>
+	           </div>
+	        </div>
+	     </div>
+	</div>
+
+    <div class="page-content">
+    	<div class="row">
+
+		    <div class="col-md-2">
+		  	  <div class="sidebar content-box" style="display: block;">
+            <ul class="nav">
+					     <li><a href="{{ url_for('user.index') }}"><i class="glyphicon glyphicon-tasks"></i>Current Polls</a></li>
+					     <li><a href="{{ url_for('user.forms') }}"><i class="glyphicon glyphicon-tasks"></i> Add Poll</a></li>
+            </ul>
+          </div>
+          <div>
+		    </div>
+      </div>
+
+        <div id="content">
+          {% block content %}{% endblock %}
+        </div>
+
+
+      </div>
+  </div>
+
+    <footer>
+         <div class="container">
+         
+            <div class="copy text-center">
+               Copyright 2018 <a href='#'>Website</a>
+            </div>
+            
+         </div>
+      </footer>
+  </body>
+
+</html>

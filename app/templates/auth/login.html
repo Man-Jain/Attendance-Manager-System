@@ -1,0 +1,53 @@
+{% import "bootstrap/wtf.html" as wtf %}
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+    <title>Polling App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- styles -->
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+  	<script>
+	$(document).ready(function(){
+		$("#error-msg").fadeOut(3000);
+	});
+	</script>
+  	</head>
+
+
+  <body class="login-bg">
+  	<div class="header">
+	     <div class="container">
+	        <div class="row">
+	           <div class="col-md-12">
+	              <!-- Logo -->
+	              <div class="logo">
+	                 <h1><a href="index.html">Polling App</a></h1>
+	              </div>
+	           </div>
+	        </div>
+	     </div>
+	</div>
+
+	<div class="page-content container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="login-wrapper">
+					 <h3><span id="error-msg" class="label label-success">{{ error_msg }}</span></h3>
+			        <div class="box">
+			            <div class="content-wrap">
+			                <h6>Sign In</h6>
+			                {{ wtf.quick_form(form) }}
+			                <a href="{{ url_for('auth.signup') }}">Hello</a>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+		</div>
+	</div>
+  </body>
+</html>

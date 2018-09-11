@@ -1,0 +1,27 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.html" %}
+{% block content %}
+
+		  <div class="col-md-7">
+
+	  			<div class="row">
+	  				<div class="col-md-12">
+	  					<div class="content-box-large">
+	  						<div id="alert-g1" class="alert">Poll Added</div>
+	  						<div class="panel panel-default">
+			  				<div class="panel-heading">
+					            <h4>Add Poll</h4>
+					      
+					        </div>
+			  				<div class="panel-body">
+			  				
+			  					 {{ wtf.quick_form(form) }}
+			  			</div>
+			  			</div>
+	  				</div>
+	  			</div>
+	  		<!--  Page content -->
+		  </div>
+	</div>
+
+{% endblock %}
