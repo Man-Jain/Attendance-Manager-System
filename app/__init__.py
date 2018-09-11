@@ -27,4 +27,10 @@ def create_app(config_name):
 	from .api import api as api_blueprint
 	app.register_blueprint(api_blueprint)
 
+	from .hod import hod as hod_blueprint
+	app.register_blueprint(hod_blueprint)
+
+	from .faculty import faculty as faculty_blueprint
+	app.register_blueprint(faculty_blueprint)
+
 	return app
