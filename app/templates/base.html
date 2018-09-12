@@ -43,9 +43,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/logout">Logout</a></li>
           </ul>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form>
+          <div>  </div>
         </div>
       </div>
     </nav>
@@ -55,8 +53,8 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li><a href="{{ url_for('faculty.index') }}">Overview</a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Manange Students</a></li>
+            <li><a href="{{ url_for('faculty.get_attendance') }}">Reports</a></li>
+            <li><a href="{{ url_for('faculty.add_students') }}">Manange Students</a></li>
             <li><a href="#">Manange Attendance</a></li>
           </ul>
         </div>

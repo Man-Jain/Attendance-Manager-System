@@ -76,8 +76,9 @@ class Attendance(db.Model):
 	__tablename__ = 'attendance'
 
 	weekday_temp = datetime.now().weekday()
+	date_temp = datetime.now()
 	attendance_id = db.Column(db.Integer, primary_key=True)
-	date_and_time = db.Column(db.DateTime, default=datetime.now)
+	date = db.Column(db.DateTime, default=date_temp.date)
 	week_no = db.Column(db.Integer)
 	weekday = db.Column(db.Integer, default=weekday_temp)
 	period_number = db.Column(db.Integer)
