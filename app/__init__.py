@@ -25,10 +25,10 @@ def create_app(config_name):
 	app.register_blueprint(auth_blueprint)
 
 	from .api import api as api_blueprint
-	app.register_blueprint(api_blueprint)
+	app.register_blueprint(api_blueprint, url_prefix ='/api')
 
 	from .hod import hod as hod_blueprint
-	app.register_blueprint(hod_blueprint)
+	app.register_blueprint(hod_blueprint, url_prefix='/admin')
 
 	from .faculty import faculty as faculty_blueprint
 	app.register_blueprint(faculty_blueprint)

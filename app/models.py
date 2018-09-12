@@ -11,7 +11,7 @@ class Faculty(UserMixin, db.Model):
 	username = db.Column(db.String(60), index=True, unique=True)
 	name = db.Column(db.String(50))
 	password_hash = db.Column(db.String(128))
-	schedule = db.relationship('Schedule', backref = 'faculty_schedule', lazy='dynamic')
+	#schedule = db.relationship('Schedule', backref = 'faculty_schedule', lazy='dynamic')
 
 	@property
 	def password(self):
@@ -40,8 +40,8 @@ class Batches(db.Model):
 	batch_code = db.Column(db.Integer, primary_key=True)
 	section = db.Column(db.String(2))
 	semester = db.Column(db.Integer)
-	students_list = db.relationship('Student', backref='batch_student', lazy='dynamic')
-	faculty_list = db.relationship('Faculty', backref='batch_faculty', lazy='dynamic')
+	#students_list = db.relationship('Student', backref='batch_student', lazy='dynamic')
+	#faculty_list = db.relationship('Faculty', backref='batch_faculty', lazy='dynamic')
 
 	def __repr__(self):
 		return '<Batch: {}>'.format(section)
@@ -59,8 +59,10 @@ class Student(db.Model):
 class Schedule(db.Model):
 
 	__tablename__ = 'schedule'
+	weekday_temp = datetime.now().weekday()
 	schedule_id = db.Column(db.Integer, primary_key=True)
 	week_no = db.Column(db.Integer)
+	weekday = db.Column(db.Integer, default=weekday_temp)
 	batch_code = db.Column(db.Integer, db.ForeignKey('batches.batch_code'))
 	period_number = db.Column(db.Integer)
 	faculty_id = db.Column(db.Integer, db.ForeignKey('faculty.faculty_id'))
@@ -69,18 +71,19 @@ class Schedule(db.Model):
 	def __repr__(self):
 		return '<Week | Period No. : {}>'.format(week_no, period_number)
 
+
 class Attendance(db.Model):
 	__tablename__ = 'attendance'
 
+	weekday_temp = datetime.now().weekday()
 	attendance_id = db.Column(db.Integer, primary_key=True)
 	date_and_time = db.Column(db.DateTime, default=datetime.now)
-	week_no = db.Column(db.Integer, db.ForeignKey('schedule.week_no'))
-	period_number = db.Column(db.Integer, db.ForeignKey('schedule.period_number'))
+	week_no = db.Column(db.Integer)
+	weekday = db.Column(db.Integer, default=weekday_temp)
+	period_number = db.Column(db.Integer)
 	faculty_id = db.Column(db.Integer, db.ForeignKey('faculty.faculty_id'))
 	roll_no = db.Column(db.Integer, db.ForeignKey('students.roll_no'))
 	status = db.Column(db.String(2))
 
 	def __repr__(self):
 		return '<Roll No | Status : {}>'.format(roll_no, status)
-	
-		

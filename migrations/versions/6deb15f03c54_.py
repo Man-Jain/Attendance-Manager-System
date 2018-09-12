@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 218488438856
+Revision ID: 6deb15f03c54
 Revises: 
-Create Date: 2018-09-11 19:57:57.871093
+Create Date: 2018-09-12 10:12:57.712070
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '218488438856'
+revision = '6deb15f03c54'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -35,6 +35,7 @@ def upgrade():
     op.create_table('schedule',
     sa.Column('schedule_id', sa.Integer(), nullable=False),
     sa.Column('week_no', sa.Integer(), nullable=True),
+    sa.Column('weekday', sa.Integer(), nullable=True),
     sa.Column('batch_code', sa.Integer(), nullable=True),
     sa.Column('period_number', sa.Integer(), nullable=True),
     sa.Column('faculty_id', sa.Integer(), nullable=True),
@@ -54,14 +55,13 @@ def upgrade():
     sa.Column('attendance_id', sa.Integer(), nullable=False),
     sa.Column('date_and_time', sa.DateTime(), nullable=True),
     sa.Column('week_no', sa.Integer(), nullable=True),
+    sa.Column('weekday', sa.Integer(), nullable=True),
     sa.Column('period_number', sa.Integer(), nullable=True),
     sa.Column('faculty_id', sa.Integer(), nullable=True),
     sa.Column('roll_no', sa.Integer(), nullable=True),
     sa.Column('status', sa.String(length=2), nullable=True),
     sa.ForeignKeyConstraint(['faculty_id'], ['faculty.faculty_id'], ),
-    sa.ForeignKeyConstraint(['period_number'], ['schedule.period_number'], ),
     sa.ForeignKeyConstraint(['roll_no'], ['students.roll_no'], ),
-    sa.ForeignKeyConstraint(['week_no'], ['schedule.week_no'], ),
     sa.PrimaryKeyConstraint('attendance_id')
     )
     # ### end Alembic commands ###

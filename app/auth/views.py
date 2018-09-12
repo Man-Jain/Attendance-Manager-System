@@ -12,8 +12,8 @@ def login():
 	if form.validate_on_submit():
 		faculty = Faculty.query.filter_by(username=form.username.data).first()
 		if faculty is not None and faculty.verify_password(form.password.data):
-			login_user(user):
-			if faculty.username = 'ithod':
+			login_user(user)
+			if faculty.username == 'ithod':
 				return redirect(url_for('hod.index'))
 			else:
 				return redirect(url_for('faculty.index'))
